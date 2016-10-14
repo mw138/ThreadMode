@@ -17,7 +17,7 @@ public abstract class BaseWoke extends Thread implements Grouped {
 
     @Override
     public void run() {
-        while (!group.isStop() && group.checkTimes()) {
+        while (group.checkStatus()) {
             group.decreaseTimes();
             work();
         }

@@ -28,7 +28,7 @@ public class ThreadGroup {
         return stop;
     }
 
-    protected String getName() {
+    public String getName() {
         return name;
     }
 
@@ -46,11 +46,12 @@ public class ThreadGroup {
     }
 
     void decreaseTimes() {
-        times--;
-    }
-
-    boolean getTimesMode() {
-        return timesMode;
+        if (stop) {
+            throw new IllegalStateException("");
+        }
+        if (--times <= 0) {
+            stop = true;
+        }
     }
 
     public void start() {
@@ -59,7 +60,10 @@ public class ThreadGroup {
         }
     }
 
-    public boolean checkTimes() {
+    public boolean checkStatus() {
+        if (stop) {
+            return false;
+        }
         if (!timesMode) {
             return true;
         }
