@@ -6,7 +6,7 @@ public class Main {
         int capacity = 3;
         Table<Cake> table = new Table<>(capacity);
 
-        ThreadGroup cookerGroup = new ThreadGroup("cookerGroup");
+        ThreadGroup cookerGroup = new ThreadGroup("cookerGroup",3);
         ThreadGroup eaterGroup = new ThreadGroup("eaterGroup");
 
         Cooker cooker1 = new Cooker(table,"cooker1");
@@ -18,8 +18,6 @@ public class Main {
         cookerGroup.addThread(cooker2);
         eaterGroup.addThread(eater1);
         eaterGroup.addThread(eater2);
-
-
 
         cookerGroup.start();
         eaterGroup.start();

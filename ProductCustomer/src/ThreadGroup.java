@@ -1,3 +1,5 @@
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -5,13 +7,14 @@ public class ThreadGroup {
 
     private final String name;
 
-    private static int times;
+    private int times;
 
     private final boolean timesMode;
 
-    private boolean stop = false;
+    public volatile boolean stop = false;
 
     private List<Thread> threads = new LinkedList<Thread>();
+
 
     public ThreadGroup(String name) {
         this.name = name;
@@ -20,11 +23,11 @@ public class ThreadGroup {
 
     public ThreadGroup(String name, int times) {
         this.name = name;
-        ThreadGroup.times = times;
+        this.times = times;
         this.timesMode = true;
     }
 
-    protected boolean isStop() {
+    public boolean isStop() {
         return stop;
     }
 
@@ -41,34 +44,26 @@ public class ThreadGroup {
         this.stop = true;
     }
 
-    public  int getTimes() {
+    public int getTimes() {
         return times;
     }
 
-    void decreaseTimes() {
-        if (stop) {
-            throw new IllegalStateException("");
+    int decreaseTimes() {
+        synchronized (this) {
+            return --times;
         }
-        if (--times <= 0) {
-            stop = true;
-        }
+
     }
+
+    boolean isTimesMode() {
+        return timesMode;
+    }
+
 
     public void start() {
         for (Thread thread : threads) {
             thread.start();
         }
     }
-
-    public boolean checkStatus() {
-        if (stop) {
-            return false;
-        }
-        if (!timesMode) {
-            return true;
-        }
-        return times > 0;
-    }
-
 
 }
