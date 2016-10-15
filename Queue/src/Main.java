@@ -7,7 +7,7 @@ public class Main {
         RequestQueue requestQueue = new RequestQueue();
         Thread client = new Thread(new DefaultClient(requestQueue));
         Thread server = new Thread(new DefaultServer(requestQueue));
-        client.start()
+        client.start();
         server.start();
 
     }

@@ -33,9 +33,9 @@ public class DefaultClient implements Client {
                 try {
                     Request request = createRequest();
                     sendRequest(request);
-                    requestQueue.notify();
-                    Thread.sleep(new Random().nextInt(1000));
+                    requestQueue.notifyAll();
                     requestQueue.wait();
+                    Thread.sleep(new Random().nextInt(1000));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

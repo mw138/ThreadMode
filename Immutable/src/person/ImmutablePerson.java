@@ -11,6 +11,10 @@ public class ImmutablePerson {
         this.address = address;
     }
 
+    /*
+    * 这里说明一下： 如果只是name或者address一个可变， 则不需要同步， 因为不存在线程安全的一个成对概念！
+    * */
+
     public ImmutablePerson(MutablePerson mutablePerson) {
         synchronized (mutablePerson) {
             this.name = mutablePerson.getName();

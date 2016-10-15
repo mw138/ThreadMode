@@ -18,20 +18,9 @@ public class Talker extends Thread {
     public void run() {
         int i = 1;
         while (i-- > 0) {
-            try {
-                synchronized (receiveQueue) {
-                    receiveQueue.wait();
-                }
-                Request receiveRequest = receive();
-                Request sendRequest = createRequest(receiveRequest);
-                send(sendRequest);
-                synchronized (sendQueue) {
-                    sendQueue.notifyAll();
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
+            Request receiveRequest = receive();
+            Request sendRequest = createRequest(receiveRequest);
+            send(sendRequest);
         }
     }
 

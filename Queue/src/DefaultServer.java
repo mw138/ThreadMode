@@ -22,16 +22,17 @@ public class DefaultServer implements Server {
     public void run() {
         while (true) {
             synchronized (requestQueue) {
-                try {
+                    while (requestQueue.size() <= 0) {
+                        try {
+                            requestQueue.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
+                    }
                     Request request = requestQueue.getRequest();
                     resolveRequest(request);
-                    Thread.sleep(new Random().nextInt(1000));
                     requestQueue.notify();
-                    requestQueue.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }
 

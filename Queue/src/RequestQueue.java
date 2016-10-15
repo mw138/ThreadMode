@@ -5,12 +5,12 @@ public class RequestQueue {
 
     private List<Request> requests = new LinkedList<Request>();
 
-    public synchronized void putRequest(Request request) {
+    public void putRequest(Request request) {
         requests.add(request);
 
     }
 
-    public synchronized Request getRequest() {
+    public Request getRequest() {
 
         return requests.remove(0);
 
