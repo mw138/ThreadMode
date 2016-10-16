@@ -9,8 +9,5 @@ public class Main {
         Thread server = new Thread(new DefaultServer(requestQueue));
         client.start();
         server.start();
-
     }
-
-
 }
