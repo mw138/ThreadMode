@@ -30,4 +30,7 @@
 
 
 
-
+关于api调用：
+   判断并清除当前  Thread.interrupted();
+   判断  client.isInterrupted();
+   中断  client.interrupt();
