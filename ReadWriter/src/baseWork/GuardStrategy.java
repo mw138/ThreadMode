@@ -1,4 +1,6 @@
-public interface ReadWriteLock {
+package baseWork;
+
+public interface GuardStrategy {
 
     void readLock() throws InterruptedException;
 

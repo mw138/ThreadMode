@@ -1,6 +1,6 @@
-import static javafx.scene.input.KeyCode.T;
+package baseWork;
 
-public class DefaultReadWriteLock implements ReadWriteLock {
+public class DefaultGuardStrategy implements GuardStrategy {
 
     private int read = 0;
 
@@ -14,7 +14,7 @@ public class DefaultReadWriteLock implements ReadWriteLock {
 
     private boolean readPreferred = false;
 
-    public DefaultReadWriteLock() {
+    public DefaultGuardStrategy() {
     }
 
 

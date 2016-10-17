@@ -1,3 +1,5 @@
+package baseWork;
+
 public interface Data<T> {
 
     void put(T o);

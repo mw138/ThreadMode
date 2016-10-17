@@ -1,4 +1,6 @@
-public class CharData implements Data<Character> {
+package baseWork;
+
+public class DefaultData implements Data<Character> {
     private char[] buffer = new char[]{'a','a','a','a','a'};
 
 

@@ -1,8 +1,10 @@
-public abstract class ReadHandle extends Thread implements Work {
+package baseWork;
 
-    private final ReadWriteLock lock;
+public abstract class ReadWork extends Thread implements Work {
 
-    public ReadHandle(ReadWriteLock lock) {
+    private final GuardStrategy lock;
+
+    public ReadWork(GuardStrategy lock) {
         this.lock = lock;
     }
 

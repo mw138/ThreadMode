@@ -1,8 +1,10 @@
-public class DataRead extends ReadHandle {
+package baseWork;
+
+public class DefaultReadWork extends ReadWork {
 
     private Data data;
 
-    public DataRead(Data data, ReadWriteLock lock) {
+    public DefaultReadWork(Data data, GuardStrategy lock) {
         super(lock);
         this.data = data;
     }
