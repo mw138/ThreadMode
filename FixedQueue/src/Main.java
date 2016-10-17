@@ -4,7 +4,7 @@ public class Main {
         FixedQueue queue = new FixedQueue(5);
         new Maker(queue).start();
         new Customer(queue).start();
-
+        new ClearThread(queue).start();
     }
 
 

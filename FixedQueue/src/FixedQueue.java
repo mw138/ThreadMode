@@ -45,6 +45,11 @@ public class FixedQueue {
     }
 
     public synchronized void clear() {
+        int index = head;
+        while (index% queue.length != tail) {
+            System.out.println("clear queue: [" + queue[head] + "]");
+            index++;
+        }
         for (int i=0;i<queue.length;i++) {
             queue[i] = null;
         }

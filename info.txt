@@ -30,7 +30,15 @@
 
 
 
-关于api调用：
-   判断并清除当前  Thread.interrupted();
-   判断  client.isInterrupted();
-   中断  client.interrupt();
+关于中断调用：
+   1判断并清除当前  Thread.interrupted();
+   2判断  client.isInterrupted();
+   3中断  client.interrupt();
+
+
+关于:  Join ,yield ,stop ,sleep
+   1 都是不需要锁直接可以调用
+   2 join抛出异常, 其余不抛;
+   3 如果占用锁, 都不释放锁;
+   4 只有sleep可以设置时间;
+   5 stop不推荐使用;
