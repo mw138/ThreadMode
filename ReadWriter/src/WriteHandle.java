@@ -1,4 +1,5 @@
 public abstract class WriteHandle extends Thread implements Work {
+
     private final ReadWriteLock lock;
 
     public WriteHandle(ReadWriteLock lock) {
@@ -11,7 +12,8 @@ public abstract class WriteHandle extends Thread implements Work {
             lock.writeLock();
             try {
                 work();
-            }finally {
+                System.out.println("写执行了");
+            } finally {
                 lock.writeUnlock();
             }
         } catch (InterruptedException e) {

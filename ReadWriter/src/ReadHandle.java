@@ -1,4 +1,4 @@
-public abstract class ReadHandle extends Thread implements Work{
+public abstract class ReadHandle extends Thread implements Work {
 
     private final ReadWriteLock lock;
 
@@ -12,7 +12,8 @@ public abstract class ReadHandle extends Thread implements Work{
             lock.readLock();
             try {
                 work();
-            }finally {
+                System.out.println("读执行了");
+            } finally {
                 lock.readUnlock();
             }
         } catch (InterruptedException e) {
@@ -20,7 +21,6 @@ public abstract class ReadHandle extends Thread implements Work{
         }
 
     }
-
 
 
 }
