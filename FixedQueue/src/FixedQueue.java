@@ -1,15 +1,18 @@
 public class FixedQueue {
     private String[] queue;
 
-    private int head = 0;
+    private int head;
 
-    private int tail=0;
+    private int tail;
 
-    private int count=0;
+    private int count;
 
 
     public FixedQueue(int capacity) {
         queue = new String[capacity];
+        head = 0;
+        tail = 0;
+        count = 0;
     }
 
     public synchronized void put(String s) {
@@ -46,11 +49,11 @@ public class FixedQueue {
 
     public synchronized void clear() {
         int index = head;
-        while (index% queue.length != tail) {
+        while (index % queue.length != tail) {
             System.out.println("clear queue: [" + queue[head] + "]");
             index++;
         }
-        for (int i=0;i<queue.length;i++) {
+        for (int i = 0; i < queue.length; i++) {
             queue[i] = null;
         }
         head = 0;
