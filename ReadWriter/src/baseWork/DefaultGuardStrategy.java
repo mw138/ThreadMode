@@ -53,17 +53,13 @@ public class DefaultGuardStrategy implements GuardStrategy {
             waitingWrite++;
             try {
                 while (write > 0 || read > 0 || (readPreferred && waitingReading > 0)) {
-
                     System.out.println("写在等待");
-
                     lock.wait();
-
                 }
             } finally {
                 waitingWrite--;
             }
             System.out.println("加载了写锁");
-
             write++;
         }
     }
